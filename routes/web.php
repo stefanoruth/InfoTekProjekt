@@ -12,4 +12,6 @@
 */
 
 Route::get('/', 'PageController@welcome');
+$router->get('posts/{slug}', 'PostController@show')->name('post.show');
+$router->get('teams', 'TeamController@index')->name('teams');
 $router->auth();
