@@ -1,29 +1,11 @@
 @extends('app')
 
 @section('wrapper')
-	<div class="large-3 large-centered columns">
-		<div class="login-box">
-			<div class="row">
-				<div class="large-12 columns">
-					<form method="post" action="{{ route('login') }}">
-						<div class="row">
-							<div class="large-12 columns">
-								<input type="text" name="username" placeholder="Username" />
-							</div>
-						</div>
-						<div class="row">
-							<div class="large-12 columns">
-								<input type="password" name="password" placeholder="Password" />
-							</div>
-						</div>
-						<div class="row">
-							<div class="large-12 large-centered columns">
-								<input type="submit" class="button expand" value="Log In"/>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+	<form class="form-signin" method="post" action="{{ route('login') }}">
+		{{ csrf_field() }}
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="email" id="email" class="form-control" placeholder="Email address">
+        <input type="password" id="password" class="form-control" placeholder="Password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
 @stop
