@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
     	$this->teams();
     	$this->posts();
+    	$this->users();
     }
 
     public function teams()
@@ -40,5 +41,10 @@ class DatabaseSeeder extends Seeder
     	])->each(function($post){
     		factory(App\Post::class)->create(['title' => $post[0], 'slug' => str_slug($post[0]), 'body' => $post[1]]);
     	});
+    }
+
+    public function users()
+    {
+    	factory(App\User::class, 700)->create();
     }
 }
