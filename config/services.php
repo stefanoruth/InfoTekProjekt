@@ -31,8 +31,25 @@ return [
 
     'stripe' => [
         'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
+        'key' => env('pk_test_Y6uqi2N10HhstICFbrictQiV'),
+        'secret' => env('sk_test_TNTkMjcanSvElHDs3xrfMot7'),
+        // email - stef5513@edu.sde.dk
+        // pass - m!D93Bxw
+        
+        'plans' => [
+            'junior' => [
+                'age' => [
+                    'from' => 3,
+                    'to' => 12,
+                ],
+            ],
+            'member' => [
+                'age' => [
+                    'from' => 12,
+                    'to' => null,
+                ],
+            ],
+        ],
     ],
 
 ];

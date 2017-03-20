@@ -28,9 +28,8 @@ class PostController extends Controller
 	public function show($slug)
 	{
 		$post = Post::where('slug', $slug)->firstOrFail();
-
-		$prevPost = Post::where('id', '<', $post->id)->orderBy('id', 'ASC')->first();
-		$nextPost = Post::where('id', '>', $post->id)->orderBy('id', 'DESC')->first();
+		$prevPost = Post::where('created_at', '<', $post->created_at)->orderBy('created_at', 'DESC')->first();
+		$nextPost = Post::where('created_at', '>', $post->created_at)->orderBy('created_at', 'ASC')->first();
 
 		return view('show-post', compact('post', 'prevPost', 'nextPost'));
 	}

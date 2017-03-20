@@ -13,4 +13,11 @@ class TeamController extends Controller
 
     	return view('teams', compact('teams'));
     }
+
+    public function show($id)
+    {
+    	$team = Team::with('users')->findOrFail($id);
+
+    	return view('teams-show', compact('team'));
+    }
 }

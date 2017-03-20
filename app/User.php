@@ -25,4 +25,9 @@ class User extends Authenticatable
     public function getAgeAttribute(){
         return Carbon::now()->diffInYears($this->birthdate);
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'team_users')->withTimestamps();
+    }
 }
