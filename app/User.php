@@ -2,28 +2,26 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
+    protected $guarded = [];
+    protected $hidden = ['password', 'remember_token'];
+    protected $dates = ['deleted_at'];
+
+    protected $casts = [
+        'birthdate' => 'date',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $appends = ['age'];
+
+    public function getAgeAttribute(){
+        return Carbon::now()->diffInYears($this->birthdate);
+    }
 }

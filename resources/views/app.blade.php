@@ -21,6 +21,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
+					<li><a href="{{ route('blog') }}">Blog</a></li>
 					<li><a href="{{ route('teams') }}">Hold</a></li>
 					<li><a href="#">Kalender</a></li>
 					<li><a href="#">Klubben</a></li>

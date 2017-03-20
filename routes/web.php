@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', 'PageController@welcome');
+$router->get('/', 'PageController@welcome');
+$router->get('posts', 'PostController@index')->name('blog');
 $router->get('posts/{slug}', 'PostController@show')->name('post.show');
 $router->get('teams', 'TeamController@index')->name('teams');
 $router->auth();
+
+$router->group(['prefix' => 'admin'], function($router){
+
+	$router->get('users', 'UserController@index');
+});

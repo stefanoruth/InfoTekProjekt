@@ -18,33 +18,18 @@ class DatabaseSeeder extends Seeder
 
     public function teams()
     {
-    	collect([
-        	'Gymnastik - Børn 6-10år',
-        	'Gymnastik - Unge',
-        	'Gymnastik - Elite',
-        	'Gymnastik Hold 1',
-        	'Gymnastik Hold 2',
-        	'Håndbold - Øvet/Elite',
-        	'Håndbold - Senior',
-        	'Håndbold - Veteraner og pensionister',
-        ])->each(function($team){
-        	factory(App\Team::class)->create(['title' => $team]);
-        });
+    	factory(App\Team::class, 15)->create();
     }
 
     public function posts()
     {
-    	collect([
-    		['Lørdag den 22. april bliver der afholdt klubmesterskaber', null],
-    		['Louises indsats ved senior DM er absolut godkendt', null],
-    		['Indkaldelse til ordinær generalforsamling', null],
-    	])->each(function($post){
-    		factory(App\Post::class)->create(['title' => $post[0], 'slug' => str_slug($post[0]), 'body' => $post[1]]);
-    	});
+        factory(App\Post::class, 50)->create();
     }
 
     public function users()
     {
+        factory(App\User::class, 5)->states('admin')->create();
+        factory(App\User::class, 15)->states('trainer')->create();
     	factory(App\User::class, 700)->create();
     }
 }

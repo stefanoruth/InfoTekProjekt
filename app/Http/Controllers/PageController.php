@@ -9,8 +9,8 @@ class PageController extends Controller
 {
     public function welcome()
     {
-    	$posts = Post::all();
+        $posts = Post::all();
 
-    	return view('welcome', compact('posts'));
+        return view('welcome', compact('posts'));
     }
 }
