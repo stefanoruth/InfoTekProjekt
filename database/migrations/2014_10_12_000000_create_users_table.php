@@ -22,6 +22,10 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['male', 'female', 'other']);
             $table->date('birthdate');
             $table->rememberToken();
+            $table->string('stripe_id')->nullable();
+            $table->string('card_brand')->nullable();
+            $table->string('card_last_four')->nullable();
+            $table->timestamp('trial_ends_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
