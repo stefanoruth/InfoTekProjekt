@@ -21,3 +21,7 @@ $router->group(['prefix' => 'admin'], function($router){
 
 	$router->get('users', 'UserController@index');
 });
+
+
+// Laravel Cashier
+$router->post('stripe/webhook','\Laravel\Cashier\Http\Controllers\WebhookController@handleWebhook');
