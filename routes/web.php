@@ -11,12 +11,15 @@
 |
 */
 
-$router->get('/', 'PageController@welcome');
+$router->get('/', 'PageController@welcome')->name('home');
+$router->get('about', 'PageController@about')->name('about');
+$router->get('events', 'EventController@index')->name('events');
 $router->get('posts', 'PostController@index')->name('blog');
 $router->get('posts/{slug}', 'PostController@show')->name('post.show');
 $router->get('teams', 'TeamController@index')->name('teams');
 $router->get('teams/{id}', 'TeamController@show')->name('teams.show');
 $router->auth();
+$router->get('logout', 'Auth\LoginController@logout')->name('logout');
 
 $router->group(['prefix' => 'admin'], function($router){
 

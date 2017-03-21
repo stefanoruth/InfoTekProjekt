@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         factory(App\Team::class, 15)->create();
         factory(App\Post::class, 50)->create();
-        factory(App\User::class, 5)->states('admin')->create();
+        factory(App\User::class)->states('admin')->create(['email' => 'admin@example.com']);
+        factory(App\User::class, 4)->states('admin')->create();
         factory(App\User::class, 15)->states('trainer')->create();
         factory(App\User::class, 700)->create();
 

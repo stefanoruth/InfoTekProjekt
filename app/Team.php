@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-	protected $casts = ['options' => 'json'];
+	protected $casts = [
+		'options' => 'json'
+	];
 
     public function users()
     {

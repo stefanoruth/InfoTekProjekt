@@ -23,11 +23,15 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ route('blog') }}">Blog</a></li>
 					<li><a href="{{ route('teams') }}">Hold</a></li>
-					<li><a href="#">Kalender</a></li>
-					<li><a href="#">Klubben</a></li>
+					<li><a href="{{ route('events') }}">Kalender</a></li>
+					<li><a href="{{ route('about') }}">Klubben</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="{{ route('login') }}">Log ind</a></li>
+					@if(auth()->check())
+						<li><a href="{{ route('logout') }}">Log ud</a></li>
+					@else
+						<li><a href="{{ route('login') }}">Log ind</a></li>
+					@endif
 				</ul>
 			</div>
 		</div>

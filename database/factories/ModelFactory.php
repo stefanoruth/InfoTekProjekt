@@ -39,8 +39,54 @@ $factory->state(App\User::class, 'trainer', function ($faker) {
 });
 
 $factory->define(App\Team::class, function(Faker\Generator $faker) {
+    $trainingTime = roundQuarterHour($faker->dateTimeBetween('2017-03-21 08:00:00', '2017-03-21 20:00:00')->format('H:i:s'), 'H:i');
+    $baseAge = $faker->randomElement([3, 6, 8, 12, 14, 16, 20]);
+    switch ($baseAge) {
+        case 3:
+            $topAge = 6;
+            break;
+
+        case 6:
+            $topAge = 8;
+            break;
+
+        case 8:
+            $topAge = 12;
+            break;
+
+        case 12:
+            $topAge = 14;
+            break;
+
+        case 14:
+            $topAge = 16;
+            break;
+
+        case 16:
+            $topAge = 20;
+            break;
+
+        case 20:
+            $topAge = 100;
+            break;
+    }
+
 	return [
         'title' => $faker->unique()->sentence(3),
+        'description' => $faker->text(1000),
+        'options' => [
+            'age_range' => [
+                'from' => $baseAge,
+                'to' => $topAge,
+            ],
+            'training' => [
+                'day' => $faker->dayOfWeek(),
+                'time' => [
+                    'from' => $trainingTime,
+                    'to' => date('H:i', strtotime($trainingTime.' +1 hour + 30min')),
+                ]
+            ]
+        ]
     ];
 });
 

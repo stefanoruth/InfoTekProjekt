@@ -9,6 +9,8 @@ class TeamController extends Controller
 {
     public function index()
     {
+    	// return (new \App\TrainingSchedule)->list();
+
     	$teams = Team::orderBy('title', 'ASC')->get();
 
     	return view('teams', compact('teams'));
@@ -16,7 +18,9 @@ class TeamController extends Controller
 
     public function show($id)
     {
-    	$team = Team::with('users')->findOrFail($id);
+    	$team = Team::with(['users' => function($query){
+            $query->orderBy('name');
+        }])->findOrFail($id);
 
     	return view('teams-show', compact('team'));
     }
