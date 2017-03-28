@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Page;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,8 @@ class PageController extends Controller
 
     public function about()
     {
-    	return view('about');
+    	$page = Page::where('slug', 'about')->firstOrFail();
+
+    	return view('page', compact('page'));
     }
 }

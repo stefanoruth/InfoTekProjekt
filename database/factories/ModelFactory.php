@@ -100,3 +100,22 @@ $factory->define(App\Post::class, function(Faker\Generator $faker) {
         'created_at' => $faker->dateTimeBetween('-3 years'),
     ];
 });
+
+$factory->define(App\Page::class, function($faker){
+    $title = $faker->unique()->sentence();
+
+    return [
+        'title' => $title,
+        'slug' => str_slug($title),
+        'body' => $faker->text(3000),
+    ];
+});
+
+$factory->define(App\Gallery::class, function($faker){
+    $title = $faker->unique()->sentence();
+
+    return [
+        'title' => $title,
+        'folder' => str_slug($title),
+    ];
+});

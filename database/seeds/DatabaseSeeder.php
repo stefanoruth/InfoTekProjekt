@@ -1,6 +1,8 @@
 <?php
 
+use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +22,18 @@ class DatabaseSeeder extends Seeder
 
         App\Team::all()->each(function($team){
             $team->users()->attach(App\User::where('role', 'member')->has('teams', 0)->take(rand(10,30))->pluck('id'));
+        });
+
+        factory(App\Page::class)->create(['slug' => 'about', 'title' => 'Om Klubben']);
+
+
+        $faker = Factory::create();
+
+        factory(App\Gallery::class, 5)->create()->each(function($gallery) use ($faker){
+            Storage::makeDirectory('public/'.$gallery->folder);
+            foreach (range(1, rand(3,6)) as $i) {
+                $faker->image(storage_path('app/public/'.$gallery->folder));
+            }
         });
     }
 }

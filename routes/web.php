@@ -18,6 +18,10 @@ $router->get('posts', 'PostController@index')->name('blog');
 $router->get('posts/{slug}', 'PostController@show')->name('post.show');
 $router->get('teams', 'TeamController@index')->name('teams');
 $router->get('teams/{id}', 'TeamController@show')->name('teams.show');
+
+$router->get('galleries', 'GalleryController@index')->name('galleries');
+$router->get('galleries/{slug}', 'GalleryController@show')->name('galleries.show');
+
 $router->auth();
 $router->get('logout', 'Auth\LoginController@logout')->name('logout');
 
