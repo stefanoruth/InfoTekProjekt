@@ -8,6 +8,7 @@
 	<script src="{{ mix('js/app.js') }}"></script>
 	<script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
 	<script>tinymce.init({ selector:'textarea' });</script>
+	@stack('head')
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -36,7 +37,7 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="{{ route('admin.posts.index') }}">Nyheder</a></li>
-									<li><a href="{{ route('admin.users.index') }}">Medlemmer</a></li>
+									<li><a href="{{ route('admin.users.index') }}">Brugere</a></li>
 									<li><a href="{{ route('admin.teams.index') }}">Hold</a></li>
 									<li><a href="{{ route('admin.galleries.index') }}">Billeder</a></li>
 									<li><a href="{{ route('admin.events.index') }}">Begivenheder</a></li>

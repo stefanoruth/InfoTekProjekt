@@ -13,7 +13,7 @@
 			</tbody>
 		</table>
 		<div>
-			<a href="{{ route('admin.teams.create') }}" class="btn btn-primary">Opret Gallery</a>
+			<a href="{{ route('admin.galleries.create') }}" class="btn btn-primary">Opret Gallery</a>
 		</div>
 	</div>
 @stop

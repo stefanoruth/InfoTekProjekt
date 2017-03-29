@@ -32,6 +32,7 @@ $router->group(['middleware' => 'auth'], function($router){
 
 	$router->get('logout', 'Auth\LoginController@logout')->name('logout');
 	$router->get('profile', 'UserController@profile')->name('user.profile');
+	$router->post('profile/store', 'UserController@store')->name('user.store');
 	$router->get('events/{id}/join', 'EventController@toggleEvent')->name('events.join');
 
 	$router->get('admin/posts', 'AdminController@postList')->name('admin.posts.index');
@@ -40,7 +41,6 @@ $router->group(['middleware' => 'auth'], function($router){
 	$router->get('admin/posts/{id}', 'AdminController@postEdit')->name('admin.posts.edit');
 
 	$router->get('admin/users', 'AdminController@userList')->name('admin.users.index');
-	$router->get('admin/users/{id}', 'AdminController@userShow')->name('admin.users.show');
 
 	$router->get('admin/teams', 'AdminController@teamList')->name('admin.teams.index');
 	$router->get('admin/teams/create', 'AdminController@teamCreate')->name('admin.teams.create');
@@ -51,6 +51,7 @@ $router->group(['middleware' => 'auth'], function($router){
 	$router->get('admin/galleries/create', 'AdminController@galleryCreate')->name('admin.galleries.create');
 	$router->post('admin/galleries/store', 'AdminController@galleryStore')->name('admin.galleries.store');
 	$router->get('admin/galleries/{id}', 'AdminController@galleryEdit')->name('admin.galleries.edit');
+	$router->get('admin/galleries/{id}/delete-image/{image}', 'AdminController@galleryRemoveImage')->name('admin.galleries.image.remove');
 
 	$router->get('admin/events', 'AdminController@eventList')->name('admin.events.index');
 	$router->get('admin/events/create', 'AdminController@eventCreate')->name('admin.events.create');

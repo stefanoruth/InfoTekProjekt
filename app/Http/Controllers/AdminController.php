@@ -9,6 +9,7 @@ use App\Post;
 use App\Team;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -149,5 +150,57 @@ class AdminController extends Controller
     	$gallery = Gallery::findOrFail($id);
 
     	return view('admin.gallery-edit', compact('gallery'));
+    }
+
+    public function galleryCreate()
+    {
+    	$gallery = new Gallery;
+
+    	return view('admin.gallery-edit', compact('gallery'));
+    }
+
+    public function galleryStore()
+    {
+    	if (request('type') === 'image') {
+    		$gallery = Gallery::findOrFail(request('id'));
+
+    		$gallery->addImage(request()->file('file'));
+
+    		return;
+    	}
+
+		$this->validate(request(), [
+			'title' => [
+				'required',
+				Rule::unique('galleries', 'title')->ignore(request('id')),
+			],
+			'type' => 'required|in:edit'
+		]);
+
+		$gallery = Gallery::firstOrNew(['id' => request('id')]);
+		$gallery->title = request('title');
+		$gallery->folder = str_slug($gallery->title);
+		$gallery->save();
+	
+		return redirect()->route('admin.galleries.edit', $gallery->id);
+    }
+
+    public function galleryRemoveImage($id, $image)
+    {
+    	$gallery = Gallery::findOrFail($id);
+    	$gallery->removeImage($image);
+
+    	return redirect()->route('admin.galleries.edit', $id);
+    }
+
+    public function userList()
+    {
+    	$users = User::when(request('q'), function($query){
+    		$search = '%'.request('q').'%';
+    		$query->where('name', 'LIKE', $search)
+    		->orWhere('email', 'LIKE', $search);
+    	})->orderBy('name', 'ASC')->paginate(20)->appends(['q' => request('q')]);
+
+    	return view('admin.user-list', compact('users'));
     }
 }

@@ -35,4 +35,9 @@ class User extends Authenticatable
     {
         return $this->role == 'admin';
     }
+
+    public function listTeams()
+    {
+        return $this->teams()->pluck('title')->all();
+    }
 }
