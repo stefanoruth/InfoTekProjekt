@@ -19,7 +19,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
+				<a class="navbar-brand" href="{{ url('/') }}">DanGym</a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -31,18 +31,20 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					@if(auth()->check())
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Nyheder</a></li>
-								<li><a href="#">Opret Nyhed</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">Medlemmer</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">Hold</a></li>
-								<li><a href="#">Opret Hold</a></li>
-							</ul>
-						</li>
+						@if(auth()->user()->isAdmin())
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="{{ route('admin.posts.index') }}">Nyheder</a></li>
+									<li><a href="{{ route('admin.users.index') }}">Medlemmer</a></li>
+									<li><a href="{{ route('admin.teams.index') }}">Hold</a></li>
+									<li><a href="{{ route('admin.galleries.index') }}">Billeder</a></li>
+									<li><a href="{{ route('admin.events.index') }}">Begivenheder</a></li>
+									<li><a href="{{ route('admin.about.edit') }}">Klubben</a></li>
+								</ul>
+							</li>
+						@endif
+						<li><a href="{{ route('user.profile') }}">Profile</a></li>
 						<li><a href="{{ route('logout') }}">Log ud</a></li>
 					@else
 						<li><a href="{{ route('login') }}">Log ind</a></li>

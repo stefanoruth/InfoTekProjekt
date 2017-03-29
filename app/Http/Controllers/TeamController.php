@@ -9,8 +9,6 @@ class TeamController extends Controller
 {
     public function index()
     {
-    	// return (new \App\TrainingSchedule)->list();
-
     	$teams = Team::orderBy('title', 'ASC')->get();
 
     	return view('teams', compact('teams'));

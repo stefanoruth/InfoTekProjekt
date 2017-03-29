@@ -119,3 +119,15 @@ $factory->define(App\Gallery::class, function($faker){
         'folder' => str_slug($title),
     ];
 });
+
+$factory->define(App\Event::class, function($faker){
+    $startDate = $faker->dateTimeBetween('-3 years')->format('Y-m-d H:i:s');
+    $endDate = date('Y-m-d H:i:s', strtotime($startDate.' '.$faker->randomElement(['+2 hours', '+1 day', '+3days'])));
+
+    return [
+        'title' => $faker->sentence(),
+        'description' => $faker->text(1000),
+        'start_at' => $startDate,
+        'ends_at' => $endDate,
+    ];
+});

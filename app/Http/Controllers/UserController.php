@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    public function profile()
     {
-    	return User::take(10)->get();
+    	$user = auth()->user();
+
+    	return view('profile', compact('user'));
     }
 }

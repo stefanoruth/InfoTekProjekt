@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 
 class Gallery extends Model
 {
+	protected $guarded = [];
+	
 	public function link()
 	{
 		return route('galleries.show', [$this->folder]);

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+	protected $guarded = [];
+	
     public function link()
     {
     	return route('post.show', $this->slug);
@@ -13,6 +15,6 @@ class Post extends Model
 
     public function getShortAttribute()
     {
-    	return str_limit($this->body, 200);
+    	return str_limit(strip_tags($this->body), 200);
     }
 }

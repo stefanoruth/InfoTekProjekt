@@ -10,7 +10,7 @@
       <div class="blog-post">
         <h2 class="blog-post-title">{{ $post->title }}</h2>
         <p class="blog-post-meta">{{ $post->created_at->format('d F, Y') }}</p>
-		{{ $post->body }}
+		{!! $post->body !!}
       </div>
 
 		@include('partial.post-pager', [
