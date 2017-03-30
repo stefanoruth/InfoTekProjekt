@@ -22,7 +22,8 @@ class User extends Authenticatable
 
     protected $appends = ['age'];
 
-    public function getAgeAttribute(){
+    public function getAgeAttribute()
+    {
         return Carbon::now()->diffInYears($this->birthdate);
     }
 

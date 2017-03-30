@@ -9,30 +9,30 @@ class EventController extends Controller
 {
     public function index()
     {
-    	$events = Event::orderBy('start_at', 'DESC')->paginate(15);
+        $events = Event::orderBy('start_at', 'DESC')->paginate(15);
 
-    	return view('events', compact('events'));
+        return view('events', compact('events'));
     }
 
     public function show($id)
     {
-    	$event = Event::with('users')->findOrFail($id);
+        $event = Event::with('users')->findOrFail($id);
 
-    	return view('events-show', compact('event'));
+        return view('events-show', compact('event'));
     }
 
     public function toggleEvent($id)
     {
-    	$event = Event::findOrFail($id);
+        $event = Event::findOrFail($id);
 
-    	$userId = auth()->id();
+        $userId = auth()->id();
 
-    	if ($event->isAttending($userId)) {
-    		$event->users()->detach($userId);
-    	} else {
-    		$event->users()->attach($userId);
-    	}
+        if ($event->isAttending($userId)) {
+            $event->users()->detach($userId);
+        } else {
+            $event->users()->attach($userId);
+        }
 
-    	return redirect()->route('events.show', $event->id);
+        return redirect()->route('events.show', $event->id);
     }
 }

@@ -9,17 +9,17 @@ class TeamController extends Controller
 {
     public function index()
     {
-    	$teams = Team::orderBy('title', 'ASC')->get();
+        $teams = Team::orderBy('title', 'ASC')->get();
 
-    	return view('teams', compact('teams'));
+        return view('teams', compact('teams'));
     }
 
     public function show($id)
     {
-    	$team = Team::with(['users' => function($query){
+        $team = Team::with(['users' => function ($query) {
             $query->orderBy('name');
         }])->findOrFail($id);
 
-    	return view('teams-show', compact('team'));
+        return view('teams-show', compact('team'));
     }
 }

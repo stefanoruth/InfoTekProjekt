@@ -8,17 +8,17 @@ class Team extends Model
 {
     protected $guarded = [];
     
-	protected $casts = [
-		'options' => 'json'
-	];
+    protected $casts = [
+        'options' => 'json'
+    ];
 
     public function users()
     {
-    	return $this->belongsToMany(User::class, 'team_users')->withTimestamps();
+        return $this->belongsToMany(User::class, 'team_users')->withTimestamps();
     }
 
     public function link()
     {
-    	return route('teams.show', $this->id);
+        return route('teams.show', $this->id);
     }
 }

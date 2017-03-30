@@ -17,8 +17,8 @@ class PageController extends Controller
 
     public function about()
     {
-    	$page = Page::where('slug', 'about')->firstOrFail();
+        $page = Page::where('slug', 'about')->firstOrFail();
 
-    	return view('page', compact('page'));
+        return view('page', compact('page'));
     }
 }
