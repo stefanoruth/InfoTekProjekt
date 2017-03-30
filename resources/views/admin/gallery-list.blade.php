@@ -8,6 +8,7 @@
 					<tr>
 						<td>{{ $gallery->title }}</td>
 						<td style="width: 80px;"><a href="{{ route('admin.galleries.edit', $gallery->id) }}" class="btn btn-default">Edit</a></td>
+						<td style="width: 100px;"><a href="{{ route('admin.galleries.delete', $gallery->id) }}" class="btn btn-danger">Remove</a></td>
 					</tr>
 				@endforeach
 			</tbody>

@@ -39,6 +39,7 @@ $router->group(['middleware' => 'auth'], function($router){
 	$router->get('admin/posts/create', 'AdminController@postCreate')->name('admin.posts.create');
 	$router->post('admin/posts/store', 'AdminController@postStore')->name('admin.posts.store');
 	$router->get('admin/posts/{id}', 'AdminController@postEdit')->name('admin.posts.edit');
+	$router->get('admin/posts/{id}/delete', 'AdminController@postDestroy')->name('admin.posts.delete');
 
 	$router->get('admin/users', 'AdminController@userList')->name('admin.users.index');
 
@@ -46,17 +47,20 @@ $router->group(['middleware' => 'auth'], function($router){
 	$router->get('admin/teams/create', 'AdminController@teamCreate')->name('admin.teams.create');
 	$router->post('admin/teams/store', 'AdminController@teamStore')->name('admin.teams.store');
 	$router->get('admin/teams/{id}', 'AdminController@teamEdit')->name('admin.teams.edit');
+	$router->get('admin/teams/{id}/delete', 'AdminController@teamDestroy')->name('admin.teams.delete');
 
 	$router->get('admin/galleries', 'AdminController@galleryList')->name('admin.galleries.index');
 	$router->get('admin/galleries/create', 'AdminController@galleryCreate')->name('admin.galleries.create');
 	$router->post('admin/galleries/store', 'AdminController@galleryStore')->name('admin.galleries.store');
 	$router->get('admin/galleries/{id}', 'AdminController@galleryEdit')->name('admin.galleries.edit');
 	$router->get('admin/galleries/{id}/delete-image/{image}', 'AdminController@galleryRemoveImage')->name('admin.galleries.image.remove');
+	$router->get('admin/galleries/{id}/delete', 'AdminController@galleryDestroy')->name('admin.galleries.delete');
 
 	$router->get('admin/events', 'AdminController@eventList')->name('admin.events.index');
 	$router->get('admin/events/create', 'AdminController@eventCreate')->name('admin.events.create');
 	$router->post('admin/events/store', 'AdminController@eventStore')->name('admin.events.store');
 	$router->get('admin/events/{id}', 'AdminController@eventEdit')->name('admin.events.edit');
+	$router->get('admin/events/{id}/delete', 'AdminController@eventDestroy')->name('admin.events.delete');
 
 	$router->get('admin/about', 'AdminController@pageEdit')->name('admin.about.edit');
 	$router->post('admin/about/store', 'AdminController@pageStore')->name('admin.about.store');

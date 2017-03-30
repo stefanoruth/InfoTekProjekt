@@ -9,6 +9,7 @@
 						<td>{{ $event->start_at->format('d/m-Y H:i') }} - {{ $event->ends_at->format('d/m-Y H:i') }}</td>
 						<td>{{ $event->title }}</td>
 						<td style="width: 80px;"><a href="{{ route('admin.events.edit', $event->id) }}" class="btn btn-default">Edit</a></td>
+						<td style="width: 100px;"><a href="{{ route('admin.events.delete', $event->id) }}" class="btn btn-danger">Remove</a></td>
 					</tr>
 				@endforeach
 			</tbody>

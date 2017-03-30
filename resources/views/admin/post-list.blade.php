@@ -7,7 +7,8 @@
 				@foreach($posts as $post)
 					<tr>
 						<td>{{$post->created_at->format('d F, Y') }} - {{ $post->title }}</td>
-						<td style="width: 80px;"><a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-default">Edit</a></td>
+						<td style="width: 80px;"><a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-warning">Edit</a></td>
+						<td style="width: 100px;"><a href="{{ route('admin.posts.delete', $post->id) }}" class="btn btn-danger">Remove</a></td>
 					</tr>
 				@endforeach
 			</tbody>

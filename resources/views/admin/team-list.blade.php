@@ -7,7 +7,9 @@
 				@foreach($teams as $team)
 					<tr>
 						<td>{{ $team->title }}</td>
+						<td>Deltagere: {{ $team->users()->count() }}</td>
 						<td style="width: 80px;"><a href="{{ route('admin.teams.edit', $team->id) }}" class="btn btn-default">Edit</a></td>
+						<td style="width: 100px;"><a href="{{ route('admin.teams.delete', $team->id) }}" class="btn btn-danger">Remove</a></td>
 					</tr>
 				@endforeach
 			</tbody>

@@ -69,6 +69,13 @@ class AdminController extends Controller
     	return redirect()->route('admin.posts.index');
     }
 
+    public function postDestroy($id)
+    {
+        Post::findOrFail($id)->delete();
+
+        return redirect()->route('admin.posts.index');
+    }
+
     public function teamList()
     {
     	$teams = Team::all();
@@ -97,6 +104,13 @@ class AdminController extends Controller
     	$team->users()->sync(request('users'));
 
     	return redirect()->route('admin.teams.edit', $team->id);
+    }
+
+    public function teamDestroy($id)
+    {
+        Team::findOrFail($id)->delete();
+
+        return redirect()->route('admin.teams.index');
     }
 
     public function eventList()
@@ -136,6 +150,13 @@ class AdminController extends Controller
     	$event->save();
 
     	return redirect()->route('admin.events.index');
+    }
+
+    public function eventDestroy($id)
+    {
+        Event::findOrFail($id)->delete();
+
+        return redirect()->route('admin.events.index');
     }
 
     public function galleryList()
@@ -191,6 +212,13 @@ class AdminController extends Controller
     	$gallery->removeImage($image);
 
     	return redirect()->route('admin.galleries.edit', $id);
+    }
+
+    public function galleryDestroy($id)
+    {
+        Gallery::findOrFail($id)->delete();
+
+        return redirect()->route('admin.galleries.index');
     }
 
     public function userList()
