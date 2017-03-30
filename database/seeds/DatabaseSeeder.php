@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         factory(App\Gallery::class, 5)->create()->each(function($gallery) use ($faker){
             Storage::makeDirectory('public/'.$gallery->folder);
             foreach (range(1, rand(3,6)) as $i) {
-                //$faker->image(storage_path('app/public/'.$gallery->folder));
+                $faker->image(storage_path('app/public/'.$gallery->folder));
             }
         });
     }
