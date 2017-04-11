@@ -36,4 +36,9 @@ class Event extends Model
     {
         return $this->users()->count();
     }
+
+    public function isOpen()
+    {
+        return strtotime($this->start_at) > time();
+    }
 }

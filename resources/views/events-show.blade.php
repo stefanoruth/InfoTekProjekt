@@ -12,7 +12,7 @@
 				<li>{{ $user->name }}</li>
         	@endforeach
         </ul>
-        @if(auth()->check())
+        @if(auth()->check() && $event->isOpen())
         	@if($event->isAttending(auth()->id()))
         		<a href="{{ route('events.join', $event->id) }}">Frameld</a>
         	@else
