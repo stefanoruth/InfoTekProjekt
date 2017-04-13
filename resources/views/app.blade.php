@@ -48,6 +48,7 @@
 						<li><a href="{{ route('user.profile') }}">Profile</a></li>
 						<li><a href="{{ route('logout') }}">Log ud</a></li>
 					@else
+						<li><a href="{{ route('register') }}">Registrer</a></li>
 						<li><a href="{{ route('login') }}">Log ind</a></li>
 					@endif
 				</ul>
