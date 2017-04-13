@@ -35,6 +35,10 @@ $router->group(['middleware' => 'auth'], function($router){
 	$router->post('profile/store', 'UserController@store')->name('user.store');
 	$router->get('events/{id}/join', 'EventController@toggleEvent')->name('events.join');
 
+	$router->post('subscribe', 'UserController@subscribe')->name('user.subscribe');
+});
+
+$router->group(['middleware' => ['auth', 'admin']], function($router){
 	$router->get('admin/posts', 'AdminController@postList')->name('admin.posts.index');
 	$router->get('admin/posts/create', 'AdminController@postCreate')->name('admin.posts.create');
 	$router->post('admin/posts/store', 'AdminController@postStore')->name('admin.posts.store');

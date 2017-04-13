@@ -42,4 +42,20 @@
 			<li><a href="{{ $team->link() }}">{{ $team->title }}</a></li>
 		@endforeach
 	</ul>
+
+	<strong>Kontigent</strong>
+	<form action="{{ route('user.subscribe') }}" method="POST">
+	{{ csrf_field() }}
+	  <script
+	    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+	    data-key="{{ config('services.stripe.key') }}"
+	    data-amount="999"
+	    data-name="InfoTekDemo"
+	    data-description="Kontigent"
+	    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+	    data-locale="auto"
+	    data-zip-code="false"
+	    data-currency="dkk">
+	  </script>
+	</form>
 @stop

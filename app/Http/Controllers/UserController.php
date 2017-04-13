@@ -36,4 +36,12 @@ class UserController extends Controller
 
         return redirect()->route('user.profile');
     }
+
+    public function subscribe(Request $request)
+    {
+        $user = auth()->user();
+
+        dd($user->newSubscription('member', 'member')->create($request->get('stripeToken')));
+
+    }
 }
