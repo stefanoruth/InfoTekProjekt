@@ -35,6 +35,22 @@ return [
         'secret' => env('STRIPE_SECRET', 'sk_test_UCIRotq9FdF5jFZgJylZr3ra'),
         // email - stef5513@edu.sde.dk
         // pass - m!D93Bxw
+        // 
+        
+        'plans' => [
+            [
+                'name'  => 'member',
+                'title' => 'Almindeligt Medlemskab',
+                'price' => 60000,
+                'age'   => [16,100],
+            ],
+            [
+                'name'  => 'junior',
+                'title' => 'Junior Medlemskab',
+                'price' => 25000,
+                'age'   => [5,15],
+            ],
+        ]
     ],
 
 ];

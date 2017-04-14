@@ -36,6 +36,7 @@ $router->group(['middleware' => 'auth'], function($router){
 	$router->get('events/{id}/join', 'EventController@toggleEvent')->name('events.join');
 
 	$router->post('subscribe', 'UserController@subscribe')->name('user.subscribe');
+	$router->post('subscription/cancel', 'UserController@subscriptionCancel')->name('user.subscription.cancel');
 });
 
 $router->group(['middleware' => ['auth', 'admin']], function($router){

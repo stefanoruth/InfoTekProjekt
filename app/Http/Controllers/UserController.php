@@ -40,8 +40,24 @@ class UserController extends Controller
     public function subscribe(Request $request)
     {
         $user = auth()->user();
+        $plan = $user->plan('name');
 
-        dd($user->newSubscription('member', 'member')->create($request->get('stripeToken')));
+        $user->newSubscription($plan, $plan)->create($request->get('stripeToken'));
 
+        return redirect()->route('user.profile');
+    }
+
+    public function subscriptionCancel(Request $request)
+    {
+        $user = auth()->user();
+        $subscription = $user->subscription($user->plan('name'));
+
+        if ($request->get('force') == 1) {
+            $subscription->cancelNow();
+        } else {
+            $subscription->cancel();
+        }
+
+        return redirect()->route('user.profile');
     }
 }
