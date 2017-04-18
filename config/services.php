@@ -33,9 +33,6 @@ return [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY', 'pk_test_WvcvKFFAmiM0l2U4q1ME5YSb'),
         'secret' => env('STRIPE_SECRET', 'sk_test_UCIRotq9FdF5jFZgJylZr3ra'),
-        // email - stef5513@edu.sde.dk
-        // pass - m!D93Bxw
-        // 
         
         'plans' => [
             [
